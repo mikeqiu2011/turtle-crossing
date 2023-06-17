@@ -11,24 +11,24 @@ screen.listen()
 
 player = Player()
 car_manager = CarManager()
+score_board = Scoreboard()
 
 screen.onkey(fun=player.move, key='Up')
 
 game_is_on = True
 i = 0
-level = 0
 
 while game_is_on:
     time.sleep(0.1)
     screen.update()
     i += 1
 
-    if i == 100:
+    if i == 50:
         print('increase cars!!')
         car_manager.add_cars()
         i = 0
 
-    car_manager.move_cars(level)
+    car_manager.move_cars(score_board.level)
 
     if car_manager.is_collide(player.pos()):
         print('collison detected')
@@ -37,4 +37,9 @@ while game_is_on:
     if player.is_win():
         print('you win')
         player.restart()
-        level += 1
+
+        score_board.level += 1
+        score_board.refresh()
+
+
+screen.exitonclick()
