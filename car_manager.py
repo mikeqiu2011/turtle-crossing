@@ -31,3 +31,12 @@ class CarManager:
     def move_cars(self):
         for car in self.cars:
             car.forward(STARTING_MOVE_DISTANCE)
+
+    def is_collide(self, position):
+        is_collide = False
+
+        for car in self.cars:
+            if car.distance(position) < 30:
+                is_collide = True
+
+        return is_collide

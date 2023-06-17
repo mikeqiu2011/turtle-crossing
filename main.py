@@ -21,6 +21,10 @@ while game_is_on:
 
     car_manager.move_cars()
 
+    if car_manager.is_collide(player.pos()):
+        print('collison detected')
+        game_is_on = False
+
     if player.is_win():
         print('you win')
         player.restart()
