@@ -10,6 +10,7 @@ screen.tracer(0)
 screen.listen()
 
 player = Player()
+car_manager = CarManager()
 
 screen.onkey(fun=player.move, key='Up')
 
@@ -17,6 +18,8 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
+
+    car_manager.move_cars()
 
     if player.is_win():
         print('you win')
