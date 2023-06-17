@@ -20,17 +20,17 @@ class Car(Turtle):
 class CarManager:
     def __init__(self):
         self.cars = []
-        self.init_cars()
+        self.add_cars()
 
-    def init_cars(self):
-        for y in range(-200, 280, 20):
-            x = random.randint(0, 400)
+    def add_cars(self):
+        for y in random.sample(range(-200, 280, 20), 10):
+            x = random.randint(300, 500)
             car = Car((x, y))
             self.cars.append(car)
 
-    def move_cars(self):
+    def move_cars(self, level):
         for car in self.cars:
-            car.forward(STARTING_MOVE_DISTANCE)
+            car.forward(STARTING_MOVE_DISTANCE + MOVE_INCREMENT * level)
 
     def is_collide(self, position):
         is_collide = False
